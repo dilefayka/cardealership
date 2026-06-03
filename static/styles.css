@@ -20,17 +20,10 @@ html, body {
   margin: 0;
   padding: 0;
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(240, 165, 0, 0.10), transparent 60%),
-    radial-gradient(900px 500px at -10% 20%, rgba(76, 175, 125, 0.06), transparent 55%),
     var(--bg);
   color: var(--text);
   font-family: "Manrope", -apple-system, "Segoe UI", sans-serif;
   min-height: 100vh;
-}
-
-.grain {
-  position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .topbar {
