@@ -58,5 +58,4 @@ def require_role(*allowed_roles: str):
                 f"Недостаточно прав: требуется одна из ролей {allowed_roles}"
             )
         return role
-
     return dependency
