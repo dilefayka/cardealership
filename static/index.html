@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>АВТОCALON · клиент</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <span class="brand-name">АВТОSALON</span>
+    </div>
+    <div class="session" id="session">
+      <span id="role-badge" class="badge badge-off">не авторизован</span>
+      <button id="logout-btn" class="btn btn-ghost" hidden>Выйти</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="panel" id="auth-panel">
+      <h2 class="panel-title">Вход в систему</h2>
+      <p class="hint">admin / admin123 — менеджер · guest / guest123 — клиент</p>
+      <div class="form-row">
+        <input id="login-username" class="input" placeholder="Логин" autocomplete="username" />
+        <input id="login-password" class="input" type="password" placeholder="Пароль" autocomplete="current-password" />
+        <button id="login-btn" class="btn btn-accent">Войти</button>
+      </div>
+      <div id="auth-error" class="error" hidden></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title">Каталог автомобилей</h2>
+      <div class="form-row filters">
+        <input id="filter-brand" class="input" placeholder="Марка (напр. Toyota)" />
+        <input id="filter-price" class="input" type="number" placeholder="Цена до, ₽" />
+        <button id="filter-btn" class="btn">Фильтр</button>
+        <button id="filter-reset" class="btn btn-ghost">Сброс</button>
+      </div>
+      <div id="cars-grid" class="cards"></div>
+    </section>
+
+    <section class="panel admin-only" hidden>
+      <h2 class="panel-title">Добавить автомобиль <span class="tag">admin</span></h2>
+      <div class="form-grid">
+        <input id="car-brand" class="input" placeholder="Марка" />
+        <input id="car-model" class="input" placeholder="Модель" />
+        <input id="car-year" class="input" type="number" placeholder="Год" />
+        <input id="car-price" class="input" type="number" placeholder="Цена, ₽" />
+        <select id="car-body" class="input">
+          <option value="sedan">Седан</option>
+          <option value="hatchback">Хэтчбек</option>
+          <option value="suv">Внедорожник</option>
+          <option value="coupe">Купе</option>
+          <option value="wagon">Универсал</option>
+        </select>
+        <button id="car-add-btn" class="btn btn-accent">Добавить</button>
+      </div>
+      <div id="car-error" class="error" hidden></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title">Пользователи</h2>
+      <button id="users-load" class="btn">Загрузить список</button>
+      <table class="table" id="users-table" hidden>
+        <thead>
+          <tr><th>ID</th><th>Имя</th><th>Email</th><th>Возраст</th></tr>
+        </thead>
+        <tbody id="users-body"></tbody>
+      </table>
+    </section>
+
+    <section class="panel admin-only" hidden>
+      <h2 class="panel-title">Создать пользователя <span class="tag">admin</span></h2>
+      <div class="form-grid">
+        <input id="user-name" class="input" placeholder="Имя" />
+        <input id="user-email" class="input" placeholder="Email" />
+        <input id="user-age" class="input" type="number" placeholder="Возраст (необязательно)" />
+        <button id="user-add-btn" class="btn btn-accent">Создать</button>
+      </div>
+      <div id="user-error" class="error" hidden></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title">Избранное <span class="tag tag-soft">LocalStorage</span></h2>
+      <p class="hint">Сохраняется в браузере и переживает перезагрузку страницы.</p>
+      <div id="fav-list" class="fav-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Курсовая работа · КСП · клиент-серверное приложение на FastAPI
+  </footer>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
